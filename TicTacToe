@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -49,7 +50,11 @@ public class TicTacToe {
 				continue;
 			}
 		}
-		System.out.println("Congratulations! " + winner + "'s have won! Thanks for playing.");
+		if (winner.equalsIgnoreCase("draw")) {
+			System.out.println("It's a draw! Thanks for playing.");
+		} else {
+			System.out.println("Congratulations! " + winner + "'s have won! Thanks for playing.");
+		}
 	}
 
 	static String checkWinner() {
@@ -87,6 +92,14 @@ public class TicTacToe {
 				return "O";
 			}
 		}
+
+		for (int a = 0; a < 9; a++) {
+			if (Arrays.asList(board).contains(String.valueOf(a+1))) {
+				break;
+			}
+			else if (a == 8) return "draw";
+		}
+
 		System.out.println(turn + "'s turn; enter a slot number to place " + turn + " in:");
 		return null;
 	}
